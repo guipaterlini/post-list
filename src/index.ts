@@ -1,1 +1,1 @@
-import "./lot";
+import "./posts";
