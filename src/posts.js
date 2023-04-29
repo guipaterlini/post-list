@@ -48,16 +48,18 @@ function adicionarNoRoot(conteudo) {
 }
 function adicionarPostsNaPagina() {
     return __awaiter(this, void 0, void 0, function () {
-        var data;
+        var data, conteudo;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0: return [4 /*yield*/, getPosts()];
                 case 1:
                     data = _a.sent();
+                    conteudo = "<div class='row row-wrap'>";
                     data.forEach(function (post) {
-                        var conteudo = "\n    <h2>".concat(post.title, "</h2>\n    <p>").concat(post.body, "</p>\n    ");
-                        adicionarNoRoot(conteudo);
+                        conteudo = "\n    ".concat(conteudo, "\n    <div class=\"column column-50\">\n    <h2>").concat(post.title, "</h2>\n    <p>").concat(post.body, "</p>\n    </div>\n    ");
                     });
+                    conteudo = "\n  ".concat(conteudo, "\n  </div>\n  ");
+                    adicionarNoRoot(conteudo);
                     return [2 /*return*/];
             }
         });

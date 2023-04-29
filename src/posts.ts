@@ -21,14 +21,22 @@ function adicionarNoRoot(conteudo: string) {
 
 async function adicionarPostsNaPagina() {
   const data = await getPosts();
+  let conteudo = "<div class='row row-wrap'>";
 
   data.forEach((post) => {
-    const conteudo = `
+    conteudo = `
+    ${conteudo}
+    <div class="column column-50">
     <h2>${post.title}</h2>
     <p>${post.body}</p>
+    </div>
     `;
-    adicionarNoRoot(conteudo);
   });
+  conteudo = `
+  ${conteudo}
+  </div>
+  `;
+  adicionarNoRoot(conteudo);
 }
 
 adicionarPostsNaPagina();
