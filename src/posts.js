@@ -40,7 +40,13 @@ function getPosts() {
         return res.json();
     });
 }
-function testPost() {
+function adicionarNoRoot(conteudo) {
+    var root = document.getElementById("root");
+    if (root) {
+        root.innerHTML = root.innerHTML + conteudo;
+    }
+}
+function adicionarPostsNaPagina() {
     return __awaiter(this, void 0, void 0, function () {
         var data;
         return __generator(this, function (_a) {
@@ -48,10 +54,13 @@ function testPost() {
                 case 0: return [4 /*yield*/, getPosts()];
                 case 1:
                     data = _a.sent();
-                    console.log(data);
+                    data.forEach(function (post) {
+                        var conteudo = "\n    <h2>".concat(post.title, "</h2>\n    <p>").concat(post.body, "</p>\n    ");
+                        adicionarNoRoot(conteudo);
+                    });
                     return [2 /*return*/];
             }
         });
     });
 }
-testPost();
+adicionarPostsNaPagina();

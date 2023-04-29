@@ -11,9 +11,24 @@ function getPosts(): Promise<Post[]> {
   );
 }
 
-async function testPost() {
-  const data = await getPosts();
-  console.log(data);
+function adicionarNoRoot(conteudo: string) {
+  const root = document.getElementById("root");
+
+  if (root) {
+    root.innerHTML = root.innerHTML + conteudo;
+  }
 }
 
-testPost();
+async function adicionarPostsNaPagina() {
+  const data = await getPosts();
+
+  data.forEach((post) => {
+    const conteudo = `
+    <h2>${post.title}</h2>
+    <p>${post.body}</p>
+    `;
+    adicionarNoRoot(conteudo);
+  });
+}
+
+adicionarPostsNaPagina();
