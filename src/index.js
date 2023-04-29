@@ -1,2 +1,2 @@
 "use strict";
-import "./lot.js";
+import "./posts.js";
